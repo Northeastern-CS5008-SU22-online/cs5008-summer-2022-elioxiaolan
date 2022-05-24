@@ -31,7 +31,7 @@ void push(int v, int* s, int* tp) {
   // put v onto the top of the stack s unless it is already full
 
   // INSERT YOUR CODE HERE
-  if (*tp < MAXSIZE) {
+  if (*tp < MAXSIZE - 1) {
     (*tp)++;
     *(s + *tp) = v;
   }
