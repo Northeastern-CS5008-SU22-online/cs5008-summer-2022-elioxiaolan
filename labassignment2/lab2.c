@@ -1,4 +1,5 @@
-//enter your email and name here
+//Name: Xiao Lan
+//Email: lan.x@northeastern.edu
 //C program to implement queue using arrays
 
 #include <stdio.h>
@@ -42,11 +43,30 @@ int peek()
 void enqueue(int data)
 {
  //insert your code here
+ if (isfull()) {
+   printf("Queue is full\n");
+   return;
+ }
+ rear++;
+ arr[rear] = data;
+ printf("Enqueue %d\n", data);
+ return;
 }
 /*----Function to remove the elements from the queue----*/
 int dequeue()
-{   
+{  
     //insert your code here
+    if (isempty()) {
+      printf("Queue is empty\n");
+    }
+    int temp = arr[0];
+    int i;
+    for (i = front + 1; i <= rear; i++) {
+       arr[i] = arr[i + 1];
+    }
+    rear--;
+    return temp;
+
 }
 /*---Function to display the elements of the queue-------*/
 void display()
