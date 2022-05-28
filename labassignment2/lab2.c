@@ -61,7 +61,7 @@ int dequeue()
     }
     int temp = arr[0];
     int i;
-    for (i = front + 1; i <= rear; i++) {
+    for (i = front + 1; i < rear; i++) {
        arr[i] = arr[i + 1];
     }
     rear--;
