@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Xiao Lan
+// email: lan.x@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -49,7 +49,15 @@ int main(){
   for (i=0; i<LIMIT; i++) {
 
     // INSERT YOUR CODE HERE
-    
+    smallest = i;
+    for (j = i+1; j < LIMIT; j++) {
+      if (source[j] < source[smallest]) {
+	smallest = j;
+      }
+    }
+    int temp = source[smallest];
+    source[smallest] = source[i];
+    source[i] = temp;
   }
   
   //print out sorted array in rows of 10
@@ -57,9 +65,15 @@ int main(){
   
 
   // INSERT YOUR CODE HERE
-    
- 
-  
-  
+  for (i = 0; i < (LIMIT / 10); i++) {
+    for (j = 0; j < 10; j++) {
+      if (i * 10 + j < LIMIT) {
+        printf("%.2d ", source[i * 10 + j]);
+      }
+    }
+    printf("\n");
+  }
+  printf("\n");
+
   return 0;
 }
