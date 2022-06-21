@@ -293,6 +293,8 @@ void breadthFirst (tnode_t* root) {
       }
     }
   }
+  freeTNode(temp);
+  freeQueue(q);
   return;
 }
 
