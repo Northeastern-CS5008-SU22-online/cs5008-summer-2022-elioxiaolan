@@ -1,5 +1,5 @@
-/*---enter your name here----*/
-/*---enter your email here-----*/
+/*Xiao Lan*/
+/*lan.x@northeastern.edu*/
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -127,6 +127,16 @@ node_t* Insert(node_t* root, int data)
     
     
     //insert your code here
+    if (root == NULL) {
+        root = NewNode(data);
+        return root;
+    }
+    if (data < root->data) {
+        root->left = Insert(root->left, data);
+    }
+    else {
+        root->right = Insert(root->right, data);
+    }
 
 
 /*updating the height after insertion of the node*/
