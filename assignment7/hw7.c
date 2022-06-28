@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Xiao Lan
+// email: lan.x@northeastern.edu
 
 // format of document is a bunch of data lines beginning with an integer (rank which we ignore)
 // then a ',' followed by a double-quoted string (city name)
@@ -123,19 +123,36 @@ int stateMachine(int inState, int nextChar, char* temp, char* inputLine, int* li
   case S4:
 
     // *** YOUR CODE GOES HERE ***
-    
+    if (inputLine[nextChar] == ',') {
+      state = S5;
+    } else {
+      state = ERRORSTATE;
+    }
     break;
          
   case S5:
 
     // *** YOUR CODE GOES HERE ***
-    
+    if (inputLine[nextChar] == '\"') {
+      state = S6;
+    } else {
+      state = ERRORSTATE;
+    }
     break;
          
   case S6:
 
     // *** YOUR CODE GOES HERE ***
-    
+    if (inputLine[nextChar] == '\"') {
+      state = ACCEPTSTATE;
+      sscanf(temp,"%d", popInt_p);
+      strcpy(temp, "");
+    } else if (inputLine[nextChar] == ',') {
+      state = S6;
+    } else {
+      state = S6;
+      appendChar(temp,inputLine[nextChar]);
+    }
     break;
          
   case ACCEPTSTATE:
