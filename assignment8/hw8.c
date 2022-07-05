@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Xiao Lan
+// email: lan.x@northeastern.edu
 
 // format of document is a bunch of data lines beginning with an integer (rank which we ignore)
 // then a ',' followed by a double-quoted string (city name)
@@ -67,6 +67,9 @@ int hash2(char* s) {
   int sumOfS = 0;
 
   //**** YOUR CODE GOES HERE ****
+  for (int i = 0; i < strlen(s); i++) {
+    sumOfS += (int)s[i];
+  }
 
   return (sumOfS % HASHSIZE);
 }
@@ -76,6 +79,7 @@ int hash3(char* s) {
   long productOfS = 1;
 
   //**** YOUR CODE GOES HERE ****
+  productOfS = (int)s[0] * (int)s[1];
 
   return ((int)(productOfS % HASHSIZE));
 }
@@ -91,6 +95,14 @@ bool addToHashTable(keyvalue_t* t[], int loc, char* k, int v) {
   bool result = true;
 
   //**** YOUR CODE GOES HERE ****
+  keyvalue_t* kv = newKeyValue(k, v);
+  if (t[loc] == NULL) {
+    t[loc] = kv;
+  } else {
+    keyvalue_t* tmp = t[loc];
+    kv->next = tmp;
+    t[loc] = kv;
+  }
 
   return result;
 }
