@@ -1,5 +1,5 @@
-/*Enter your name here*/
-/* Enter your email here*/
+/* Xiao Lan */
+/* lan.x@northeastern.edu */
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -21,20 +21,33 @@ node_t *insert(struct node *front)
 node_t *p,*temp;
 char name[20],address[100];
 temp=(node_t*)malloc(sizeof(node_t));
-printf("Enter patient Name:");
+printf("Enter patient Name: ");
 scanf("%s", temp->name);
-printf("Enter the patient's age:");
+printf("Enter the patient's age: ");
 scanf("%d",&(temp->age));
-printf("Enter the address:");
+printf("Enter the address: ");
 scanf("%s",temp->address);
-printf("Enter the reg no:");
+printf("Enter the reg no: ");
 scanf("%d",&(temp->reg));
-printf("Enter the priority:");
+printf("Enter the priority: ");
 scanf("%d",&(temp->priority));
 int pri=temp->priority;
 
 /*---insert your code here----*/
-    
+p=(node_t*)malloc(sizeof(node_t));
+if (front == NULL || pri > front->priority) {
+    temp->next = front;
+    front = temp;
+    return front;
+} else {
+    p->next = front;
+    while (p->next->priority > temp->priority) {
+        p = p->next;
+    }
+    temp->next = p->next->next;
+    p->next = temp;
+    return front;
+}
     
     
     
@@ -45,8 +58,21 @@ node_t *delete(struct node *front)
 {
     
     /*---insert your code here---*/
-    
-    
+    if (front == NULL) {
+        printf("\nTHERE IS NO PATIENT");
+        return front;
+    } else {
+        node_t *temp = front;
+        printf("Deleted Record is: ");
+        scanf("%d",&(temp->reg));
+        printf("Patient's name is: ");
+        scanf("%s", temp->name);
+        printf("Patient's age is: ");
+        scanf("%d",&(temp->age));
+        front = front->next;
+        free(temp);
+        return front;
+    }
 }
 
 /* To display the patients records */
@@ -88,7 +114,7 @@ free(temp);
             printf("\t\t\t1.ADD A PATIENT\n");
             printf("\t\t\t2.DELETE A RECORD\n");
             printf("\t\t\t3.PATIENTS WAITING IN THE QUEUE\n");
-            printf("\t\t\tEnter your choice:");
+            printf("\t\t\tEnter your choice: ");
             scanf("%d",&option);
             switch(option)
             {
