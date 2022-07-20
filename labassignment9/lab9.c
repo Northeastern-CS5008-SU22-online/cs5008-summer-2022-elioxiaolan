@@ -1,5 +1,5 @@
-// Enter your name here
-//Enter your email here
+// Xiao Lan
+// lan.x@northeastern.edu
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -107,11 +107,19 @@ void topologicalOrder(int arr[][MAX], Queue *t, int n)
         if(indeg[i]==0)
             enqueue(t,i);
     }
-    
-    
-    
+
     //insert your code here
-    
+    while (isEmpty(t->front) != 1) {
+        delNode = dequeue(t);
+        result[j++] = delNode;
+        for (i = 1; i <= n; i++) {
+            if (arr[delNode][i] == 1) {
+                if (--indeg[i] == 0) {
+                    enqueue(t, i);
+                }
+            }
+        }
+    }
     
     
     printf("topological ordering\n");
