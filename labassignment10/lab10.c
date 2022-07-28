@@ -81,7 +81,7 @@ void partition(int s[], int n, int k)
     }
     for (x = 1; x <= k; x++)
     {
-        d[x][1] = p[x];
+        m[x][1] = p[x];
     }
 
     /* 2 to k partitions*/
