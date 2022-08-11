@@ -9,6 +9,7 @@ int compression(char arr[], int n, char res[])
     int i;
     int count = 1; // counter
     int index = 0; // to store the result
+    char cur[10];
 
     // insert your code here
     for (i = 0; i < n; i++)
@@ -25,7 +26,11 @@ int compression(char arr[], int n, char res[])
         else
         {
             res[index++] = arr[i];
-            res[index++] = count + '0';
+            sprintf(cur, "%d", count);
+            for (int j = 0; j < strlen(cur); j++)
+            {
+                res[index++] = cur[j];
+            }
         }
         count = 1;
     }
@@ -38,6 +43,7 @@ int main()
     char res[50];
     int r, n = strlen(a); // n is the size of input array
     r = compression(a, n, res);
+    printf("%s\n", res);
     printf("length of the compressed string: %d\n", r);
     return 0;
 }
